@@ -1,3 +1,10 @@
+# Dapper Demo for .NET South West
+I've just use the yeoman generator for ASP.NET Core to get a simple web application. Then I've done the following
+
+* Added Dapper and Dapper.FluentMap
+* Added Npgsql as I'm using a postgres database I grabbed from the [pgfoundry](http://pgfoundry.org/projects/dbsamples/) called paglia, which is a database for a film rental service
+* Finally I've added a controller and views to display a basic master/details view with different configuration options
+
 # Welcome to ASP.NET Core
 
 We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
