@@ -1,0 +1,45 @@
+@model DapperSW.ViewModels.FilmDetails
+@{
+    ViewData["Title"] = "Film Details";
+}
+
+<div class="ui raised very padded text container segment">
+    @Html.ActionLink("Back to list", "Index", "Film", new {}, new { @class = "ui basic button" })
+    
+    <h1 class="ui center aligned icon header">
+        <i class="circular film icon"></i>
+        @Model.Title (@Model.ReleaseYear)
+    </h1>
+
+    <div class="description massive">
+        <p>@Model.Description</p>
+        <div class="ui grey label">
+            Rating
+            <div class=" detail">@Model.Rating</div>
+        </div>
+
+        <div class="ui horizontal segments">
+            <div class="ui segment">
+                <h2 class="ui header">Categories</h2>
+                @foreach (var category in Model.Categories) {
+                    <a class="ui blue tag label">@category.Name</a>
+                }
+            </div>
+
+            <div class="ui segment">
+                <h2 class="ui header">Starring</h2>
+                <div class="ui list">
+                @foreach (var actor in Model.Actors) {
+                    <div class="item">
+                        <i class="star icon"></i>
+                        <div class="content">
+                            @actor.FirstName @actor.LastName
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

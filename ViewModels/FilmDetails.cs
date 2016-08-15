@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DapperSW.Models;
 
-namespace DapperSW.FilmDetails
+namespace DapperSW.ViewModels
 {
     public class FilmDetails
     {

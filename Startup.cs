@@ -29,6 +29,8 @@ namespace DapperSW
         {
             // Add framework services.
             services.AddMvc();
+
+            services.Configure<MySettings>(options => Configuration.GetSection("MySettings").Bind(options));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
