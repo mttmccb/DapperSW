@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+using Dapper.FluentMap;
+using DapperSW.Mappings;
+using DapperSW.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +19,18 @@ namespace DapperSW
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
+            FluentMapper.Initialize(config =>
+                {   
+                    config.AddMap(new FilmMap());
+
+                    config.AddConvention<TypePrefixConvention>()
+                        .ForEntity<Film>();
+
+                   config.AddConvention<TypePrefixConvention>()
+                        .ForEntitiesInAssembly(typeof(Film).GetTypeInfo().Assembly);
+                });
+
             Configuration = builder.Build();
         }
 
