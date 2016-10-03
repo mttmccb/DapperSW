@@ -1,0 +1,23 @@
+@model IEnumerable<DapperSW.Models.Film>
+@{
+    ViewData["Title"] = "Film List";
+}
+<div class="ui content">
+<h1 class="ui icon header">
+  <i class="circular film icon"></i>
+  Film Overview
+</h1>
+
+</div>
+
+<div class="ui raised text segment">
+    <h1 class="ui black ribbon label">Random Selector</h1>
+    <ol class="ui animated selection list">
+        @foreach (var film in Model) {
+            <li class="item">
+                <div class="header">@film.Title</div>
+                @film.Description
+            </li>
+        }
+    </ol>
+</div>

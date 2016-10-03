@@ -1,4 +1,4 @@
-using System.Reflection;
+
 using Dapper.FluentMap;
 using DapperSW.Mappings;
 using DapperSW.Models;
@@ -21,16 +21,16 @@ namespace DapperSW
                 .AddEnvironmentVariables();
 
             FluentMapper.Initialize(config =>
-                {   
-                    config.AddMap(new FilmMap());
+            {
+                config.AddMap(new FilmMap());
 
-                    config.AddConvention<TypePrefixConvention>()
-                        .ForEntity<Film>();
+                config.AddConvention<TypePrefixConvention>()
+                    .ForEntity<Film>();
 
-                   config.AddConvention<TypePrefixConvention>()
-                        .ForEntitiesInAssembly(typeof(Film).GetTypeInfo().Assembly);
-                });
-
+                //config.AddConvention<TypePrefixConvention>()
+                //    .ForEntitiesInAssembly(typeof(Film).GetTypeInfo().Assembly);
+            });
+            
             Configuration = builder.Build();
         }
 
